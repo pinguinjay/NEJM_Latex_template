@@ -1,0 +1,77 @@
+\documentclass[12pt,a4paper]{article}
+
+% XeLaTeX 中文設置
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\setmainfont{Times New Roman}
+\setCJKmainfont{Noto Serif CJK TC}
+
+% 頁面與格式設定（近似 NEJM）
+\usepackage[top=2.5cm, bottom=2.5cm, left=3cm, right=3cm]{geometry}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{caption}
+
+% 行距
+\setstretch{1.5}
+
+% 標題設定
+\titleformat*{\section}{\large\bfseries}
+\titleformat*{\subsection}{\normalsize\bfseries}
+\titleformat*{\subsubsection}{\normalsize}
+
+% 頁首頁尾
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{NEJM-style Academic Paper}
+\fancyhead[R]{\thepage}
+
+% 參考文獻
+\usepackage[backend=biber, style=numeric, sorting=none]{biblatex}
+\addbibresource{refs.bib}
+
+% 摘要環境
+\newenvironment{abstract}{
+  \begin{center}
+    \bfseries Abstract
+  \end{center}
+  \begin{quote}
+}{\end{quote}}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE \textbf{論文標題 Title in English}}\\[1.5em]
+  {\large 作者1\textsuperscript{1}，作者2\textsuperscript{2}}\\[1em]
+  {\small
+    \textsuperscript{1}單位1 \\
+    \textsuperscript{2}單位2 \\
+    \texttt{email@example.com}
+  }
+\end{center}
+
+\begin{abstract}
+這裡撰寫中文摘要。\\
+\textbf{Background:} ...\\
+\textbf{Methods:} ...\\
+\textbf{Results:} ...\\
+\textbf{Conclusions:} ...
+\end{abstract}
+
+\section*{Introduction}
+\input{sections/introduction.tex}
+
+% 根據論文型態 include（請依需求選擇）
+% \include{sections/original_article}
+% \include{sections/case_report}
+% \include{sections/medical_image}
+
+\section*{Discussion}
+\input{sections/discussion.tex}
+
+\section*{References}
+\printbibliography
+
+\end{document}
